@@ -1,0 +1,7 @@
+Django>5.0<6.0
+python-dotenv
+django-debug-toolbar  # Move it to requirements-dev.in if you don't want it in prod/staging at all.
+selenium
+beautifulsoup4
+requests
+dj-database-url

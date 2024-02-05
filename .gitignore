@@ -1,0 +1,9 @@
+# Python related
+__pychache__
+*.pyc
+
+# Local app
+.env*
+db.sqlite3
+*.std.conf
+*.ssl.conf
