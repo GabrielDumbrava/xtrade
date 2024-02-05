@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements-dev.in
 #
-astroid==3.0.2
+astroid==3.0.3
     # via pylint
 black==24.1.1
     # via -r requirements-dev.in
