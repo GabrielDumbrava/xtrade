@@ -21,15 +21,10 @@ class LeadTrader(models.Model):
         help_text="Used in case the trader has a localized name (Chinese for example).",
     )
     profile_url = models.URLField("Profile URL", blank=True, null=False, default="")
-    status_available = models.BooleanField(
-        "Available for copy", help_text="If there are available spots to be copied."
-    )
-    status_copy = models.BooleanField(
-        "I am copying", help_text="If I'm already copying this trader", default=False
-    )
+    status_available = models.BooleanField("Available for copy")
+    status_copy = models.BooleanField("I am copying", default=False)
     status_mock_copy = models.BooleanField(
         "I am mock copying",
-        help_text="If I'm already mock copying this trader",
         default=False,
     )
     notify_on_availability = models.BooleanField(default=False)
@@ -56,6 +51,8 @@ class LeadTrader(models.Model):
                     leader_name=self.name,
                     leader_url=self.profile_url,
                 )
+        if _minimum_copy_amount := profile.get("minimum_amount", None):
+            self.minimum_copy_amount = _minimum_copy_amount
         _updated_profile = dict(self.profile)
         _updated_profile.update(profile)
         self.profile = _updated_profile

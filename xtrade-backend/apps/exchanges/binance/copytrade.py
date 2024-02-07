@@ -65,6 +65,17 @@ def get_leader_profile(leader: LeadTrader, dry_run: bool = False) -> dict | str:
                 profile["seats"] = int(seats[1])
         except IndexError:
             pass
+        try:
+            minimum_amount = soup.find_all("div", string="Minimum Copy Amount")[0]
+            min_tag = minimum_amount.find_next_sibling("div").text
+            if min_tag == "--":
+                logger.error(
+                    "Could not get minimum amount for [%s] %s", leader.pk, leader.name
+                )
+            else:
+                profile["minimum_amount"] = min_tag
+        except IndexError:
+            pass
 
     except TimeoutException:
         logger.error(

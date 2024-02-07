@@ -16,8 +16,9 @@ class LeadTraderAdmin(admin.ModelAdmin):
         "get_profile_url",
         "status_copy",
         "status_mock_copy",
-        "status_available",
         "notify_on_availability",
+        "status_available",
+        "minimum_copy_amount",
     )
     list_display_links = ["pk", "name"]
     list_editable = ["status_copy", "status_mock_copy", "notify_on_availability"]
@@ -34,9 +35,11 @@ class LeadTraderAdmin(admin.ModelAdmin):
             "Copy",
             {
                 "fields": [
-                    "status_available",
-                    "status_copy",
-                    "status_mock_copy",
+                    ("status_available", "minimum_copy_amount"),
+                    (
+                        "status_copy",
+                        "status_mock_copy",
+                    ),
                 ]
             },
         ),
