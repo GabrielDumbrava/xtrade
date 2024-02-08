@@ -14,9 +14,9 @@ from dotenv import load_dotenv
 from pathlib import Path
 
 APP_ROOT = Path(__file__).resolve().parent
-DOTENV_FILE = APP_ROOT / f"main/{os.environ.get('DOTENV_FILE', '.env')}"
+DOTENV_FILE = APP_ROOT / ".env"
 load_dotenv(DOTENV_FILE)
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "apps.main.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "main.settings")
 
 application = get_wsgi_application()

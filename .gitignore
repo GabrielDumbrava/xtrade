@@ -7,3 +7,4 @@ __pychache__
 db.sqlite3
 *.std.conf
 *.ssl.conf
+wsgi-prod.py
