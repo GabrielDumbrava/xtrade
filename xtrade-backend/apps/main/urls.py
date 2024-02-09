@@ -22,6 +22,7 @@ from django.conf import settings  # type: ignore
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 
+admin.site.site_header = "xTrade"
 
 ADMIN_URL = environ.get("ADMIN_URL", "admin")
 
